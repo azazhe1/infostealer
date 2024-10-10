@@ -19,12 +19,12 @@ The C2 server will have a python script that waits for a victim to connect, then
 
 ## USB
 In our Usb we have :
-+ `Top Secret.lnk`: A shortcut that looks like a folder, when we click on it it triggers `abc.vbs`.
-+ `abc.vbs`: Visual Basic Scripting that start `start.bat` and `target.bat`. We use vbs to not have the console opening when we start the .pyw.
-+ `Documents`:  Folder containing the folder `Top Secret` and the file `Top Secret\Secret_Data.pdf`.
-+ `start.bat`: Batch file that open the folder `Documents\Top Secret`
-+ `target.bat`: Batch file that start `target.pyw`
-+ `target.pyw`: Python script that steals Firefox and wifi credentials and sends them to our C2 server. We use `pyw` instead of `py` because we don't want to open the console on startup.
++ **Top Secret.lnk**: A shortcut that looks like a folder, when we click on it it triggers `abc.vbs`.
++ **abc.vbs**: Visual Basic Scripting that start `start.bat` and `target.bat`. We use vbs to not have the console opening when we start the .pyw.
++ **Documents**:  Folder containing the folder `Top Secret` and the file `Top Secret\Secret_Data.pdf`.
++ **start.bat**: Batch file that open the folder `Documents\Top Secret`
++ **target.bat**: Batch file that start `target.pyw`
++ **target.pyw**: Python script that steals Firefox and wifi credentials and sends them to our C2 server. We use `pyw` instead of `py` because we don't want to open the console on startup.
 
 In summary we have: 
 ![schema](media/images/schema.png)
@@ -53,3 +53,5 @@ What's really in the usb :
     + `WshShell.Run chr(34) & "USB_LETTER:\start.bat" & Chr(34), 0`
 
 ## Demo
+https://github.com/user-attachments/assets/c61ebdd6-6728-40dd-acd6-9aa36e6d62bd
+
