@@ -43,7 +43,7 @@ def recv_data(sock: socket):
             return buffer
         buffer+= data
 
-def write_file(data: bytes, file_name: str) -> None :
+def write_file(data: bytes, file_name: str) -> None:
     decoded_data = base64.b64decode(data)
     with open(file_name, 'wb') as f :
         f.write(decoded_data)
