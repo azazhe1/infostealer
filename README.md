@@ -22,18 +22,18 @@ In our Usb we have :
 + **Top Secret.lnk**: A shortcut that looks like a folder, when we click on it it triggers `abc.vbs`.
 + **abc.vbs**: Visual Basic Scripting that start `start.bat` and `target.bat`. We use vbs to not have the console opening when we start the .pyw.
 + **Documents**:  Folder containing the folder `Top Secret` and the file `Top Secret\Secret_Data.pdf`.
-+ **start.bat**: Batch file that open the folder `Documents\Top Secret`
-+ **target.bat**: Batch file that start `target.pyw`
++ **start.bat**: Batch file that open the folder `Documents\Top Secret`.
++ **target.bat**: Batch file that start `target.pyw`.
 + **target.pyw**: Python script that steals Firefox and wifi credentials and sends them to our C2 server. We use `pyw` instead of `py` because we don't want to open the console on startup.
 
-In summary we have: 
+In summary we have : 
 ![schema](media/images/schema.png)
 
-In order that the victim does not see all these files we will hide them:
+In order that the victim does not see all these files we will hide them :
 
 ![hide](media/images/hide_file.png)
 
-To encourage the victim to click on our shortcut we will change its icon to a folder:
+To encourage the victim to click on our shortcut we will change its icon to a folder :
 
 ![icon](media/images/icon_folder.png)
 
@@ -48,9 +48,12 @@ What's really in the usb :
 + The victim must click on the shortcut **Top Secret**.
 + The victime must have python.
 + Firefox keypass should not be locked with session password.
-+ You need to change in **usb/abc.vbs** the USB device letter with the name of your USB device.:
+
+## Configuration
++ You need to change in **usb/abc.vbs** the USB device letter with the name of your USB device :
     + `WshShell.Run chr(34) & "USB_LETTER:\target.bat" & Chr(34), 0`
     + `WshShell.Run chr(34) & "USB_LETTER:\start.bat" & Chr(34), 0`
++ You need to replace the host in **ubs/target.pyw** with your C2 server.
 
 ## Demo
 https://github.com/user-attachments/assets/c61ebdd6-6728-40dd-acd6-9aa36e6d62bd
