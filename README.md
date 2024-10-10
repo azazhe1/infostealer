@@ -2,7 +2,7 @@
 > [!WARNING]
 > This code is meant for educational use only and should not be used for malicious activities.
 
-This repository shows how to use an infostealer to steal the Firefox and wifi credentials of a Windows machine and send them to a C2 server.
+This repository shows how to make an infostealer that steal the Firefox and wifi credentials of a Windows machine and send them to a C2 server.
 
 ## Firefox credentials
 To steal Firefox credentials, we will decrypt the data of a profile that is stored in the logins.json file. To decrypt them we will use this python script [firefox_decrypt.py](https://github.com/unode/firefox_decrypt/blob/main/firefox_decrypt.py)
